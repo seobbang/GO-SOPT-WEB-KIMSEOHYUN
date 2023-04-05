@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #faf7ef;
+}
+
+/* header */
+.header {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 4.5rem;
+
+  padding: 0 2rem;
+
+  background-color: #fbda8f;
+}
+
+.header > h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header > button {
+  background: none;
+  border: none;
+
+  padding: 0;
+
+  cursor: pointer;
+}
+
+/** main **/
+.main {
+  display: flex;
+  margin: 2rem 1rem;
+  gap: 2rem;
+}
+
+/* nav */
+.nav {
+  display: flex;
+  flex-direction: column;
+
+  width: 15rem;
+  height: 17rem;
+
+  padding: 1.2rem 1.5rem;
+
+  border-radius: 1rem;
+
+  background-color: #ffd188;
+}
+
+.nav h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  margin-bottom: 0.6rem;
+}
+
+.nav li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 2.4rem;
+  margin: 0.7rem 0;
+  padding: 0 1rem;
+
+  border-radius: 0.6rem;
+
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  color: white;
+  background-color: #f9a828;
+
+  cursor: pointer;
+  /* background-colot: #f4ede1; */
+}
+
+/* card section */
+.card_section {
+  display: flex;
+  flex-wrap: wrap;
+
+  column-gap: 0.7rem;
+  row-gap: 2rem;
+
+  width: 100%;
+}
+
+.card_section article {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 15rem;
+  height: 18rem;
+
+  padding: 1rem;
+
+  background-color: #ffffff;
+}
+
+.card_section header {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card_section ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+
+  width: 10rem;
+  height: 1rem;
+
+  margin: 1rem 0;
+
+  overflow: hidden;
+}
+
+.card_section li:before {
+  content: "#";
+}
+
+.card_section article > img {
+  width: 9rem;
+  height: 9rem;
+}
+
+.card_section article button {
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+  margin-top: auto;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.card_section article button img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
