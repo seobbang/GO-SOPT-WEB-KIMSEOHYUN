@@ -38,11 +38,11 @@ body {
 
 /* menu bar */
 
-.menu_container {
+.menu__container {
   cursor: pointer;
 }
 
-.menu_bar {
+.menu__bar {
   visibility: hidden;
   position: absolute;
   right: 0;
@@ -56,22 +56,22 @@ body {
   background-color: white;
 }
 
-.menu_container:hover > .menu_bar {
+.menu__container:hover > .menu__bar {
   visibility: visible;
 }
 
-.menu_bar > h2 {
+.menu__bar > h2 {
   font-size: 1.7rem;
   font-weight: bold;
   margin-bottom: 2rem;
 }
 
-.menu_bar li {
+.menu__bar li {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
-.menu_bar li:hover {
+.menu__bar li:hover {
   color: orange;
 }
 
@@ -130,7 +130,7 @@ body {
 }
 
 /* card section */
-.card_section {
+.card__section {
   display: flex;
   flex-wrap: wrap;
 
@@ -140,7 +140,7 @@ body {
   width: 100%;
 }
 
-.card_section article {
+.card__section article {
   display: flex;
   flex-direction: column;
 
@@ -155,14 +155,14 @@ body {
 }
 
 @media (max-width: 1275px) {
-  .card_section article {
+  .card__section article {
     width: 17rem;
     padding: 1.2rem;
   }
 }
 
 @media (max-width: 1117px) {
-  .card_section article {
+  .card__section article {
     width: 21rem;
     height: 20rem;
     padding: 2rem;
@@ -170,22 +170,22 @@ body {
 }
 
 @media (max-width: 956px) {
-  .card_section {
+  .card__section {
     justify-content: center;
   }
-  .card_section article {
+  .card__section article {
     width: 25rem;
     height: 20rem;
     padding: 2rem;
   }
 }
 
-.card_section header {
+.card__section header {
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-.card_section ul {
+.card__section ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -199,16 +199,16 @@ body {
   overflow: hidden;
 }
 
-.card_section li:before {
+.card__section li:before {
   content: "#";
 }
 
-.card_section article > img {
+.card__section article > img {
   width: 9rem;
   height: 9rem;
 }
 
-.card_section article button {
+.card__section article button {
   display: flex;
   align-items: center;
 
@@ -221,12 +221,12 @@ body {
   cursor: pointer;
 }
 
-.card_section article button svg {
+.card__section article button svg {
   width: 1.6rem;
   height: 1.6rem;
   fill: gray;
 }
 
-.card_section article svg:hover {
+.card__section article svg:hover {
   fill: pink;
 }

@@ -23,8 +23,7 @@ body {
   font-weight: bold;
 }
 
-/* main */
-
+/** main **/
 /* calender section */
 
 .calender {
@@ -41,6 +40,7 @@ body {
   border-radius: 1rem;
 
   background-color: white;
+  box-shadow: 2px 3px 5px gray;
 }
 
 .calender span {
@@ -70,7 +70,7 @@ body {
 }
 
 /* todolist section */
-.todo_list {
+.todo__list {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -80,11 +80,11 @@ body {
   margin-top: 1.3rem;
 }
 
-.todo_category {
+.todo__category {
   margin: 0.5rem 0;
 }
 
-.todo_category h2 {
+.todo__category h2 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,18 +100,32 @@ body {
 
   text-shadow: 1px 1px 2px rgb(61, 61, 61);
   color: white;
+  box-shadow: 2px 2px 2px gray;
 }
 
-.todo_category li::before {
-  content: "- ";
-}
-.todo_category li {
+.todo__category li {
+  display: flex;
+  align-items: flex-start;
+
   width: 11rem;
   font-weight: bold;
 
   word-break: keep-all;
 
   margin: 1rem 0;
+}
+
+.todo__category svg {
+  width: 1rem;
+  height: 1rem;
+
+  margin-right: 0.3rem;
+
+  fill: white;
+}
+
+.todo__category svg.done {
+  fill: rgb(255, 115, 138);
 }
 
 .sopt {
@@ -154,4 +168,6 @@ footer button {
   font-weight: bold;
 
   cursor: pointer;
+
+  box-shadow: 1px 2px 2px gray;
 }
