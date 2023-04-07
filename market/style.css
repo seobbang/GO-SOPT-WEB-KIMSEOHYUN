@@ -1,9 +1,15 @@
+:root {
+  --main-bg-color: #faf7ef;
+  --main-orange-color: #fbda8f;
+  --dark-orange-color: #f6ae3a;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #faf7ef;
+  background-color: var(--main-bg-color);
 }
 
 /* header */
@@ -19,7 +25,7 @@ body {
 
   padding: 0 2rem;
 
-  background-color: #fbda8f;
+  background-color: var(--main-orange-color);
 }
 
 .header > h1 {
@@ -72,7 +78,7 @@ body {
 }
 
 .menu__bar li:hover {
-  color: orange;
+  color: var(--dark-orange-color);
 }
 
 /** main **/
@@ -94,7 +100,7 @@ body {
 
   border-radius: 1rem;
 
-  background-color: #ffd188;
+  background-color: var(--main-orange-color);
 }
 
 .nav h2 {
@@ -126,7 +132,7 @@ body {
   font-weight: bold;
 
   color: white;
-  background-color: #f9a828;
+  background-color: var(--dark-orange-color);
 }
 
 /* card section */
@@ -151,7 +157,7 @@ body {
 
   padding: 1rem;
 
-  background-color: #ffffff;
+  background-color: white;
 }
 
 @media (max-width: 1275px) {
