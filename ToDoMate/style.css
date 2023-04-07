@@ -1,3 +1,9 @@
+:root {
+  --main-pink-color: rgb(248, 222, 226);
+  --dark-pink-color: rgb(255, 115, 138);
+  --main-puple-color: rgb(234, 206, 235);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -7,7 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  background-color: rgb(248, 222, 226);
+  background-color: var(--main-pink-color);
 }
 
 /* header */
@@ -125,7 +131,7 @@ body {
 }
 
 .todo__category svg.done {
-  fill: rgb(255, 115, 138);
+  fill: var(--dark-pink-color);
 }
 
 .sopt {
@@ -150,7 +156,7 @@ body {
   width: 100%;
   height: 4rem;
 
-  background-color: rgb(234, 206, 235);
+  background-color: var(--main-puple-color);
 }
 
 footer button {
