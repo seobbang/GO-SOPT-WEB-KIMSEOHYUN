@@ -67,7 +67,6 @@ body {
 
 .calender span > p {
   position: absolute;
-  z-index: 2;
 
   font-size: 0.8rem;
   font-weight: bold;
