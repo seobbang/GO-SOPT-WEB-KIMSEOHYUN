@@ -159,14 +159,14 @@ body {
   background-color: white;
 }
 
-@media (max-width: 1275px) {
+@media (max-width: 80rem) {
   .card__section article {
     width: 17rem;
     padding: 1.2rem;
   }
 }
 
-@media (max-width: 1117px) {
+@media (max-width: 70rem) {
   .card__section article {
     width: 21rem;
     height: 20rem;
@@ -174,7 +174,7 @@ body {
   }
 }
 
-@media (max-width: 956px) {
+@media (max-width: 60rem) {
   .card__section {
     justify-content: center;
   }

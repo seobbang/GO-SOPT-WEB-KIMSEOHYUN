@@ -46,7 +46,7 @@ body {
   border-radius: 1rem;
 
   background-color: white;
-  box-shadow: 2px 3px 5px gray;
+  box-shadow: 0.125rem 0.188rem 0.313rem gray;
 }
 
 .calender span {
@@ -103,9 +103,9 @@ body {
   font-size: 1.3rem;
   font-weight: bold;
 
-  text-shadow: 1px 1px 2px rgb(61, 61, 61);
+  text-shadow: 0.063rem 0.063rem 0.125rem rgb(61, 61, 61);
   color: white;
-  box-shadow: 2px 2px 2px gray;
+  box-shadow: 0.125rem 0.125rem 0.125rem gray;
 }
 
 .todo__category li {
@@ -174,5 +174,5 @@ footer button {
 
   cursor: pointer;
 
-  box-shadow: 1px 2px 2px gray;
+  box-shadow: 0.063rem 0.125rem 0.125rem gray;
 }
