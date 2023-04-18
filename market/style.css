@@ -201,6 +201,7 @@ body {
 .card__section .selected_snack,
 .card__section .selected_drink,
 .card__section .selected_ramyun {
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -264,7 +265,7 @@ body {
   margin: 1rem 0;
 }
 
-.card__section ul {
+.card__section div.tagContainer ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -289,13 +290,62 @@ body {
 
   color: rgb(71, 71, 71);
   background-color: var(--lignt-gray-color);
+
+  cursor: pointer;
 }
 
 .card__section button.showMore:hover {
   color: white;
   background-color: black;
+}
+
+.card__section div.tagModal {
+  position: absolute;
+  z-index: 1;
+  top: 6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 90%;
+
+  padding: 1.5rem 1rem;
+
+  border-radius: 1rem;
+
+  background-color: pink;
+}
+
+.card__section div.tagModal ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 0.4rem;
+}
+
+.card__section div.tagModal button.close {
+  font-size: 1rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 0.2rem;
+
+  color: rgb(71, 71, 71);
+  background-color: white;
 
   cursor: pointer;
+}
+
+.card__section div.tagModal button.close:hover {
+  color: white;
+  background-color: black;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .card__section article > img {

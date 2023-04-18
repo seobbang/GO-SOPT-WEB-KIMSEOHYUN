@@ -80,11 +80,21 @@ PRODUCT_DATA.forEach((item) => {
     tagList += `<li>${tag}</li>`;
   });
 
-  cardSection.innerHTML += `<article class="${item.kind}" id="${item.name}">
+  cardSection.innerHTML += `<article class="${item.kind}" id="${item.name
+    .split(" ")
+    .join("")}">
             <header>${item.name}</header>
             <div class="tagContainer">
                 <ul>${tagList}</ul>
-                <button type="button" class="showMore">+</button>
+                <button type="button" class="showMore ${item.name
+                  .split(" ")
+                  .join("")}">+</button>
+            </div>
+            <div class="tagModal hidden">
+                <ul>${tagList}
+                <button type="button" class="close ${item.name
+                  .split(" ")
+                  .join("")}">x</button></ul>
             </div>
             <img src="${item.img}" alt="상품 사진" />
             <button type="button"  class="heartButton">
