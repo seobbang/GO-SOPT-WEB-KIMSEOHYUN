@@ -2,6 +2,7 @@
   --main-bg-color: #faf7ef;
   --main-orange-color: #fbda8f;
   --dark-orange-color: #f6ae3a;
+  --lignt-gray-color: rgb(199, 199, 199);
 }
 
 * {
@@ -143,6 +144,48 @@ body {
   background-color: var(--dark-orange-color);
 }
 
+/* product section */
+.selected__category {
+  display: flex;
+
+  margin-bottom: 1rem;
+}
+
+.selected__category > li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 5.5rem;
+  height: 2.5rem;
+
+  font-size: 1.2rem;
+
+  margin-right: 1rem;
+  padding: 0 0.5rem;
+
+  border: 0.1rem solid gray;
+  border-radius: 0.2rem;
+
+  background-color: white;
+}
+
+.selected__category > li.hidden {
+  display: none;
+}
+
+.selected__category > li > button {
+  border: none;
+  border-radius: 0.1rem;
+
+  font-weight: bold;
+
+  background-color: var(--lignt-gray-color);
+  color: white;
+
+  cursor: pointer;
+}
+
 /* card section */
 .card__section {
   display: flex;
@@ -167,7 +210,7 @@ body {
   border-radius: 0.7rem;
 
   background-color: white;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgb(199, 199, 199);
+  box-shadow: 0.1rem 0.1rem 0.3rem var(--lignt-gray-color);
 }
 
 @media (max-width: 80rem) {
