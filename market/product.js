@@ -82,10 +82,12 @@ PRODUCT_DATA.forEach((item) => {
 
   cardSection.innerHTML += `<article class="${item.kind}" id="${item.name}">
             <header>${item.name}</header>
-            <ul>${tagList}</ul>
-            <button type="button" class="showMore">+</button>
+            <div class="tagContainer">
+                <ul>${tagList}</ul>
+                <button type="button" class="showMore">+</button>
+            </div>
             <img src="${item.img}" alt="상품 사진" />
-            <button type="button">
+            <button type="button"  class="heartButton">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="48"
