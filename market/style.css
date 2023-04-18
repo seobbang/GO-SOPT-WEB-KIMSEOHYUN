@@ -197,7 +197,10 @@ body {
   width: 100%;
 }
 
-.card__section article {
+.card__section .selected_all,
+.card__section .selected_snack,
+.card__section .selected_drink,
+.card__section .selected_ramyun {
   display: flex;
   flex-direction: column;
 
@@ -211,6 +214,10 @@ body {
 
   background-color: white;
   box-shadow: 0.1rem 0.1rem 0.3rem var(--lignt-gray-color);
+}
+
+.card__section article {
+  display: none;
 }
 
 @media (max-width: 80rem) {
