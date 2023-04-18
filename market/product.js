@@ -70,12 +70,20 @@ const PRODUCT_DATA = [
     img: "images/홈런볼.jpg",
   },
 ];
+
 const cardSection = $(".card__section");
+
 PRODUCT_DATA.forEach((item) => {
-  cardSection.innerHTML += `<article class="${item.kind}">
+  let tagList = "";
+  const { tag } = item;
+  tag.forEach((tag) => {
+    tagList += `<li>${tag}</li>`;
+  });
+
+  cardSection.innerHTML += `<article class="${item.kind}" id="${item.name}">
             <header>${item.name}</header>
-            <ul>
-            </ul>
+            <ul>${tagList}</ul>
+            <button type="button" class="showMore">+</button>
             <img src="${item.img}" alt="상품 사진" />
             <button type="button">
               <svg
