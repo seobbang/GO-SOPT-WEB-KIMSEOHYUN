@@ -1,28 +1,55 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
-const categoryList = $(".nav ul");
+const categoryNavList = $(".nav ul");
+const categoryTagList = $(".selected__category");
 
-const clickCategory = (e) => {
-  const { tagName, classList } = e.target;
-  // li 요소인지 검사
-  if (tagName === "LI") {
-    // class에 selected 포함되어 있는지 검사
-    if (classList.contains("selected")) {
-      classList.remove("selected");
-    } else {
-      classList.add("selected");
-    }
-  } else {
-    e.preventDefault(); // li 요소가 아니라면 이벤트 막기
+// 클래스 추가, 삭제 함수
+function handleClassList(targetList, action) {
+  switch (action) {
+    case "ADD":
+      targetList.forEach((targetList) => targetList.classList.add("selected"));
+      break;
+
+    case "REMOVE":
+      targetList.forEach((targetList) =>
+        targetList.classList.remove("selected")
+      );
+      break;
   }
-};
+}
 
-function handleCategoryNav(categoryList) {
-  categoryList.addEventListener("click", clickCategory);
+// 카테고리 클릭 핸들링 함수
+function handleCategoryClick(type, e) {
+  const { tagName, classList: navClassList } = e.target;
+  const targetCategory = $$(`li.${navClassList[0]}`);
+
+  // nav 클릭시
+  if (tagName === "LI" && type === "nav") {
+    navClassList.contains("selected")
+      ? handleClassList(targetCategory, "REMOVE") // 카테고리 해제
+      : handleClassList(targetCategory, "ADD"); // 카테고리 추가
+  }
+  // tag X 버튼 클릭시
+  else if (tagName === "BUTTON") {
+    handleClassList(targetCategory, "REMOVE"); // 카테고리 해제
+  }
+  // 그 외 요소 이벤트 막기
+  else {
+    e.preventDefault();
+  }
+}
+
+function addEvent() {
+  categoryNavList.addEventListener("click", (e) =>
+    handleCategoryClick("nav", e)
+  );
+  categoryTagList.addEventListener("click", (e) =>
+    handleCategoryClick("tag", e)
+  );
 }
 
 // 페이지 내 모든 요소가 로드된 후 호출되도록 함.
 window.onload = function () {
-  handleCategoryNav(categoryList);
+  addEvent();
 };

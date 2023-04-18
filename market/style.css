@@ -151,7 +151,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.selected__category > li {
+.selected__category > li.selected {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -170,7 +170,7 @@ body {
   background-color: white;
 }
 
-.selected__category > li.hidden {
+.selected__category > li {
   display: none;
 }
 
