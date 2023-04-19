@@ -203,6 +203,17 @@ li {
   width: 100%;
 }
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
 .card__section .selected_all,
 .card__section .selected_snack,
 .card__section .selected_drink,
@@ -221,6 +232,8 @@ li {
 
   background-color: white;
   box-shadow: 0.1rem 0.1rem 0.3rem var(--lignt-gray-color);
+
+  animation: fadeInUp 1s;
 }
 
 .card__section article {
