@@ -74,9 +74,12 @@ main {
 
 img {
   border: 0.1rem solid black;
-  width: 13rem;
   height: 13rem;
   margin-bottom: 2rem;
+}
+
+img.hidden {
+  visibility: hidden;
 }
 
 button {

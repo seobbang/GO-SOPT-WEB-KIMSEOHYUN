@@ -2,10 +2,23 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
 const button = $("button.addButton");
+const img = $("img");
+const imgInput = $("input.img");
+
+function uploadImg() {
+  const { files } = $("input.img");
+  const reader = new FileReader();
+  reader.readAsDataURL(files[0]);
+  reader.onloadend = () => {
+    img.src = reader.result;
+    img.classList.remove("hidden");
+  };
+}
 
 function handleAddButton() {
   const { value: productName } = $("input.name");
   const { value: tags } = $("input.tags");
+
   const tag = tags.split(",");
   const newData = { productName, tag };
 
@@ -15,3 +28,4 @@ function handleAddButton() {
 }
 
 button.addEventListener("click", handleAddButton);
+imgInput.addEventListener("change", uploadImg);
