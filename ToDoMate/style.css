@@ -87,6 +87,8 @@ body {
   height: 19rem;
 
   margin-top: 1.3rem;
+
+  overflow-x: auto;
 }
 
 .todo__category {
@@ -259,4 +261,8 @@ dialog > button {
   border-radius: 0.2rem;
 
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
