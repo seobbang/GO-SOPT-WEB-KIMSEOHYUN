@@ -84,7 +84,7 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
 
-  height: 19rem;
+  height: 20rem;
 
   margin-top: 1.3rem;
 
@@ -206,6 +206,7 @@ footer a {
 
   cursor: pointer;
 
+  text-decoration: none;
   box-shadow: 0.063rem 0.125rem 0.125rem gray;
 }
 
