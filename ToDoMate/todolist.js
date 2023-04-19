@@ -20,12 +20,18 @@ const PRODUCT_DATA = [
 ];
 
 const toDoListSection = $("section.todo__list");
+const todayCount = $("section.calendar span.today > p");
+let toDoCount = 0;
 
-PRODUCT_DATA.forEach(({ category, todos, isDone }) => {
-  let toDoList = "";
-  todos.forEach((todos, idx) => {
-    const done = isDone[idx] ? "done" : "";
-    toDoList += `<li>
+function renderToDoList() {
+  PRODUCT_DATA.forEach(({ category, todos, isDone }) => {
+    let toDoList = "";
+
+    todos.forEach((todos, idx) => {
+      const done = isDone[idx] ? "done" : "";
+      !isDone[idx] && (toDoCount += 1);
+
+      toDoList += `<li>
     <svg
     xmlns="http://www.w3.org/2000/svg"
     height="48"
@@ -39,14 +45,33 @@ PRODUCT_DATA.forEach(({ category, todos, isDone }) => {
   </svg>
   ${todos}
   </li>`;
-  });
+    });
 
-  toDoListSection.innerHTML += `<section class="todo__category">
+    toDoListSection.innerHTML += `<section class="todo__category">
   <h2 id="${category}">${category}</h2>
   <ul>
   ${toDoList}
   </ul>
 </section>`;
-});
+  });
+  todayCount.innerText = toDoCount;
+}
 
-const toDoList = $$("section.todo_category li");
+function handleToDoButton(e) {
+  const { tagName } = e.target;
+  if (tagName === "path") {
+    const { classList } = e.target.parentElement;
+    if (classList.contains("done")) {
+      classList.remove("done");
+      todayCount.innerText = ++toDoCount;
+    } else {
+      classList.add("done");
+      todayCount.innerText = --toDoCount;
+    }
+  } else {
+    e.preventDefault();
+  }
+}
+
+toDoListSection.addEventListener("click", handleToDoButton);
+renderToDoList();
