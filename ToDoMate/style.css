@@ -30,9 +30,9 @@ body {
 }
 
 /** main **/
-/* calender section */
+/* calendar section */
 
-.calender {
+.calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 1fr 1fr 1fr;
@@ -49,23 +49,27 @@ body {
   box-shadow: 0.125rem 0.188rem 0.313rem gray;
 }
 
-.calender span {
+.calendar span {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 
-.calender time {
+.calendar time {
   font-weight: bold;
 }
 
-.calender span > img {
+.calendar span > svg {
   width: 2.3rem;
   height: 2.3rem;
 }
 
-.calender span > p {
+.calendar span > svg.today {
+  fill: pink;
+}
+
+.calendar span > p {
   position: absolute;
 
   font-size: 0.8rem;
@@ -127,6 +131,8 @@ body {
   margin-right: 0.3rem;
 
   fill: white;
+
+  cursor: pointer;
 }
 
 .todo__category svg.done {
