@@ -133,13 +133,13 @@ body {
   fill: var(--dark-pink-color);
 }
 
-.sopt {
+#솝트 {
   background-color: #eeeecc;
 }
-.ewha {
+#학교 {
   background-color: #bbddbb;
 }
-.study {
+#스터디 {
   background-color: #ccddee;
 }
 
