@@ -85,7 +85,7 @@ PRODUCT_DATA.forEach(({ category, name, tag, img }) => {
             <header>${name}</header>
             <div class="tagContainer">
                 <ul>${tagList}</ul>
-                <button type="button" class="showMore $item.name
+                <button type="button" class="showMore ${name}"
                   .split(" ")
                   .join("")}">+</button>
             </div>
