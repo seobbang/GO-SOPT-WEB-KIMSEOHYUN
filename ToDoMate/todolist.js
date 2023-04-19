@@ -67,6 +67,7 @@ function renderToDoList() {
 
 const dialogContainer = $(".dialog__container");
 const submitButton = $("dialog button");
+const input = $("dialog input");
 
 /** 할 일 리스트 클릭 핸들 함수 **/
 function handleClickToDoList(e) {
@@ -86,6 +87,7 @@ function handleClickToDoList(e) {
   // 할 일 추가 버튼
   else if (tagName === "BUTTON") {
     dialogContainer.classList.remove("hidden"); // 모달 띄우기
+    input.focus();
     submitButton.addEventListener("click", (e) =>
       handleSubmitButton(classList[0], e)
     );
@@ -97,7 +99,6 @@ function handleClickToDoList(e) {
 /** 할 일 추가 함수 **/
 function handleSubmitButton(category, e) {
   const ul = $(`ul.${category}`);
-  const input = $("dialog input");
 
   ul.innerHTML += `
   <li>
