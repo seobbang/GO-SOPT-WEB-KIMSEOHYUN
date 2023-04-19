@@ -12,19 +12,20 @@
     <header><h1>새 상품 추가 페이지</h1></header>
     <main>
       <div class="input__container">
-        <label for="name">상품명:</label>
-        <input type="text" id="name" />
+        <label for="name" class="name">상품명:</label>
+        <input type="text" class="name" id="name" />
       </div>
       <div class="input__container">
-        <label for="tag">해시태그 (","로 구분):</label>
-        <input type="text" id="tag" />
+        <label for="tags" class="tags">해시태그 (","로 구분):</label>
+        <input type="text" class="tags" id="tags" />
       </div>
       <div class="input__container">
         <label for="file">사진</label>
         <input type="file" class="img" id="file" />
       </div>
       <img src="" alt="상품 사진" />
-      <button type="button">추가</button>
+      <button type="button" class="addButton">추가</button>
     </main>
+    <script defer src="./addCard.js"></script>
   </body>
 </html>

@@ -283,6 +283,10 @@ li {
   overflow: hidden;
 }
 
+.card__section div.tagContainer li {
+  font-size: 1rem;
+}
+
 .card__section li:before {
   content: "#";
 }
@@ -330,6 +334,10 @@ li {
   flex-wrap: wrap;
 
   gap: 0.4rem;
+}
+
+.card__section div.tagModal li {
+  font-size: 1rem;
 }
 
 .card__section div.tagModal button.close {
