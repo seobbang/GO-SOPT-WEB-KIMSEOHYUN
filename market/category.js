@@ -1,3 +1,5 @@
+import { $, $$ } from "./PRODUCT_DATA.js";
+
 const categoryNavList = $(".nav ul"); // nav 카테고리
 const categoryTagList = $(".selected__category"); // tag 카테고리
 

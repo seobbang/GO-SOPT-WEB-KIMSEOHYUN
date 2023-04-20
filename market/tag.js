@@ -1,3 +1,5 @@
+import { $ } from "./PRODUCT_DATA.js";
+
 const section = $(".card__section");
 
 function handleModal(e) {
