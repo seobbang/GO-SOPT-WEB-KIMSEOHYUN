@@ -66,7 +66,8 @@ function renderToDoList() {
 }
 
 const dialogContainer = $(".dialog__container");
-const submitButton = $("dialog button");
+const addButton = $("dialog button.add");
+const closeButton = $("dialog button.close");
 const input = $("dialog input");
 
 /** 할 일 리스트 클릭 핸들 함수 **/
@@ -87,17 +88,19 @@ function handleClickToDoList(e) {
   // 할 일 추가 버튼
   else if (tagName === "BUTTON") {
     dialogContainer.classList.remove("hidden"); // 모달 띄우기
+    // 모달 닫기 이벤트 부착
+    closeButton.addEventListener("click", () => {
+      dialogContainer.classList.add("hidden");
+    });
     input.focus();
-    submitButton.addEventListener("click", (e) =>
-      handleSubmitButton(classList[0], e)
-    );
+    addButton.addEventListener("click", () => handleSubmitButton(classList[0]));
   } else {
     e.preventDefault();
   }
 }
 
 /** 할 일 추가 함수 **/
-function handleSubmitButton(category, e) {
+function handleSubmitButton(category) {
   const ul = $(`ul.${category}`);
 
   ul.innerHTML += `
@@ -116,9 +119,7 @@ function handleSubmitButton(category, e) {
   </li>`;
 
   input.value = ""; // input 비우기
-
   todayCount.innerText++; // 할 일 개수 1 추가
-  dialogContainer.classList.add("hidden"); // 모달 닫기
 }
 
 toDoListSection.addEventListener("click", handleClickToDoList);
