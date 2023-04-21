@@ -5,6 +5,7 @@ const button = $("button.addButton");
 const img = $("img");
 const imgInput = $("input.img");
 
+/* 업로드 이미지 미리 보기 함수 */
 function uploadImg() {
   const { files } = $("input.img");
   const reader = new FileReader();
