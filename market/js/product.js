@@ -1,16 +1,18 @@
 import { $, PRODUCT_DATA } from "./PRODUCT_DATA.js";
 
 const cardSection = $(".card__section");
+// 로컬 스토리지에 저장되어 있는 새로운 데이터 가져오기
 const newProduct = JSON.parse(localStorage.getItem("newData"));
+// 새로운 데이터가 있다면 상품 리스트에 추가
 if (newProduct) {
   PRODUCT_DATA.push({
     ...newProduct,
     category: "snack",
     img: "images/ABC초코쿠키.png",
   });
-  console.log(PRODUCT_DATA);
 }
 
+// 상품 리스트 렌더링
 PRODUCT_DATA.forEach(({ category, productName, tag, img }) => {
   let tagList = "";
   tag.forEach((tag) => {
