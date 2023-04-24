@@ -213,14 +213,6 @@ li {
     transform: translateZ(0);
   }
 }
-@keyframes fadeout {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
 
 .card__section .selected_all,
 .card__section .selected_snack,
