@@ -8,6 +8,9 @@ ${reset}
     height: 100vh;
     margin: 0 auto;
 }
+html {
+    font-size: 62.5%;
+}
 * {
     box-sizing: border-box;
 }`;

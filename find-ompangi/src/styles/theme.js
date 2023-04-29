@@ -1,11 +1,8 @@
 const colors = {
-  white: "#FFFFFF",
-  black: "#000000",
-  skyBlue: "#C7F5FE",
-  lightPink: "#FCC8F8",
-  lightPurple: "#EAB4F8",
-  purple: "#9900F0",
-  lightYellow: "#F3F798",
+  darkPink: "#eb9f9f",
+  lightPink: "#f1bbba",
+  beige: "#f8ecc9",
+  brown: "#a79c8e",
 };
 
 const theme = {
