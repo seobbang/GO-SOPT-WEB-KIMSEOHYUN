@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-const Header = (props) => {
-  const { level } = props;
+const Header = ({ level }) => {
   const cardCount = level === "EASY" ? 5 : level === "NORMAL" ? 7 : 9;
 
   return (

@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const Card = ({ cardInfo }) => {
+const Card = ({ cardInfo, level }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { id, imgSrc, alt } = cardInfo;
+
+  // 난이도 바뀌면, 카드 모두 다시 뒷면으로 뒤집기
+  useEffect(() => {
+    setIsOpen(false);
+  }, [level]);
 
   return (
     <>
