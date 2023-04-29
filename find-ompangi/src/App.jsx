@@ -2,8 +2,9 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import Header from "./components/Header";
 import { GlobalStyle } from "./styles/GlobalStyle";
-import Cards from "./components/Cards";
 import { useState } from "react";
+import Card from "./components/Card";
+import OMPANGI_DATA from "./data/OMPANGI_DATA";
 
 const EASY = "EASY";
 const NORMAL = "NORMAL";
@@ -23,6 +24,25 @@ function App() {
     </St.LevelButton>
   ));
 
+  // 배열 셔플 함수
+  const shuffle = (array) => {
+    array.sort(() => Math.random() - 0.5);
+  };
+
+  // 렌더링 할 랜덤 배열 만들기
+  shuffle(OMPANGI_DATA);
+  const slicedData = OMPANGI_DATA.slice(
+    0,
+    level === EASY ? 5 : level === NORMAL ? 7 : 9
+  );
+  const renderData = [...slicedData, ...slicedData];
+  shuffle(renderData);
+
+  // 카드 렌더링 --> key 값 고민
+  const cardList = renderData.map((item, idx) => (
+    <Card key={`${item.id}_${idx}`} cardInfo={item} />
+  ));
+
   return (
     <>
       <GlobalStyle />
@@ -30,7 +50,7 @@ function App() {
         <Header level={level} />
         <St.Main>
           <St.LevelContainer>{levelButtonList}</St.LevelContainer>
-          <Cards level={level} />
+          <St.CardContainer>{cardList}</St.CardContainer>
         </St.Main>
       </ThemeProvider>
     </>
@@ -76,5 +96,16 @@ const St = {
     &.selected {
       border: 0.3rem solid black;
     }
+  `,
+
+  /* 카드 */
+  CardContainer: styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 2rem;
+
+    width: 73%;
+    margin-top: 1rem;
   `,
 };
