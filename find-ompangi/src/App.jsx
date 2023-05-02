@@ -2,8 +2,8 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import Header from "./components/Header";
 import { GlobalStyle } from "./styles/GlobalStyle";
-import { useState } from "react";
-import Card from "./components/Card";
+import { useMemo, useState } from "react";
+import CardSection from "./components/CardSection";
 import OMPANGI_DATA from "./data/OMPANGI_DATA";
 
 const EASY = "EASY";
@@ -12,6 +12,7 @@ const HARD = "HARD";
 
 function App() {
   const [level, setLevel] = useState(EASY);
+  const [score, setScore] = useState(0);
 
   // 난이도 버튼 렌더링
   const levelButtonList = [EASY, NORMAL, HARD].map((item) => (
@@ -24,33 +25,37 @@ function App() {
     </St.LevelButton>
   ));
 
+  //
   // 배열 셔플 함수
   const shuffle = (array) => {
-    array.sort(() => Math.random() - 0.5);
+    let newArray = array.sort(() => Math.random() - 0.5);
+    return newArray;
   };
 
-  // 렌더링 할 랜덤 배열 만들기
-  shuffle(OMPANGI_DATA);
-  const slicedData = OMPANGI_DATA.slice(
-    0,
-    level === EASY ? 5 : level === NORMAL ? 7 : 9
-  );
-  const renderData = [...slicedData, ...slicedData];
-  shuffle(renderData);
-
-  // 카드 렌더링 --> key 값 고민
-  const cardList = renderData.map((item, idx) => (
-    <Card key={`${item.id}_${idx}`} cardInfo={item} />
-  ));
+  const renderData = useMemo(() => {
+    // 렌더링 할 랜덤 배열 만들기
+    shuffle(OMPANGI_DATA);
+    const slicedData = OMPANGI_DATA.slice(
+      0,
+      level === "EASY" ? 5 : level === "NORMAL" ? 7 : 9
+    );
+    console.log(slicedData);
+    return shuffle([...slicedData, ...slicedData]);
+  }, [level]);
+  console.log(renderData);
 
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Header level={level} />
+        <Header level={level} score={score} />
         <St.Main>
           <St.LevelContainer>{levelButtonList}</St.LevelContainer>
-          <St.CardContainer>{cardList}</St.CardContainer>
+          <CardSection
+            setScore={setScore}
+            level={level}
+            renderData={renderData}
+          />
         </St.Main>
       </ThemeProvider>
     </>
@@ -96,16 +101,5 @@ const St = {
     &.selected {
       border: 0.3rem solid black;
     }
-  `,
-
-  /* 카드 */
-  CardContainer: styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 2rem;
-
-    width: 73%;
-    margin-top: 1rem;
   `,
 };
