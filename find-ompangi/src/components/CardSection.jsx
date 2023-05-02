@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-const CardSection = ({ level, setScore, renderData }) => {
+const CardSection = ({ level, setScore, renderData, score }) => {
   const [testCardList, setTestCardList] = useState([]); // 최근에 선택된 두 카드 검사용 리스트
   const [openCardList, setOpenCardList] = useState([]); // 열려있는 카드 리스트
   const [isClickAbled, setIsClickAbled] = useState(true); // 카드 클릭 가능 여부
@@ -26,7 +26,8 @@ const CardSection = ({ level, setScore, renderData }) => {
     setIsClickAbled(false);
     // 성공
     if (testCardList[0] === testCardList[1]) {
-      setScore((score) => score + 1);
+      setScore(score + 1);
+      setIsClickAbled(true);
     }
     // 실패
     else {

@@ -52,6 +52,7 @@ function App() {
         <St.Main>
           <St.LevelContainer>{levelButtonList}</St.LevelContainer>
           <CardSection
+            score={score}
             setScore={setScore}
             level={level}
             renderData={renderData}

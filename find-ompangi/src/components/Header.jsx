@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-const Header = ({ level }) => {
+const Header = ({ level, score }) => {
   const cardCount = level === "EASY" ? 5 : level === "NORMAL" ? 7 : 9;
 
   return (
     <St.HeaderContainer>
       <h1>🔮 옴팡이를 맞춰주세요 🔮</h1>
-      <St.Score>0 / {cardCount}</St.Score>
+      <St.Score>
+        {score} / {cardCount}
+      </St.Score>
       <St.ResetButton type="button">RESET</St.ResetButton>
     </St.HeaderContainer>
   );
