@@ -10,6 +10,7 @@ const CardSection = ({ level, setScore, renderData, score }) => {
   useEffect(() => {
     setTestCardList([]);
     setOpenCardList([]);
+    setScore(0);
   }, [level]);
 
   // 카드 클릭 핸들링 함수
