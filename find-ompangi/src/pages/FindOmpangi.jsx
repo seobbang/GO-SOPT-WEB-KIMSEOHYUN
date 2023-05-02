@@ -11,6 +11,7 @@ const HARD = "HARD";
 const FindOmpangi = () => {
   const [level, setLevel] = useState(EASY);
   const [score, setScore] = useState(0);
+  const [reset, setReset] = useState(false);
 
   // 난이도 버튼 렌더링
   const levelButtonList = [EASY, NORMAL, HARD].map((item) => (
@@ -24,36 +25,41 @@ const FindOmpangi = () => {
   ));
 
   // 배열 셔플 함수
-  const shuffle = (array) => {
-    let newArray = array.sort(() => Math.random() - 0.5);
-    return newArray;
-  };
+  const shuffling = () => {
+    const shuffle = (array) => {
+      let newArray = array.sort(() => Math.random() - 0.5);
+      return newArray;
+    };
 
-  // 렌더링 할 랜덤 배열 만들기
-  const renderData = useMemo(() => {
     shuffle(OMPANGI_DATA);
     const slicedData = OMPANGI_DATA.slice(
       0,
       level === EASY ? 5 : level === NORMAL ? 7 : 9
     );
-    console.log(slicedData);
     return shuffle([...slicedData, ...slicedData]);
-  }, [level]);
+  };
+
+  // 렌더링 할 랜덤 배열 만들기
+  let renderData = useMemo(() => {
+    return shuffling();
+  }, [level, reset]);
   console.log(renderData);
+
   return (
-    <>
+    <St.Main>
       <Header level={level} score={score} />
-      <St.Main>
-        <St.LevelContainer>{levelButtonList}</St.LevelContainer>
-        <CardSection
-          score={score}
-          setScore={setScore}
-          level={level}
-          renderData={renderData}
-        />
-        <St.ResetButton type="button">RESET</St.ResetButton>
-      </St.Main>
-    </>
+      <St.LevelContainer>{levelButtonList}</St.LevelContainer>
+      <CardSection
+        score={score}
+        setScore={setScore}
+        level={level}
+        renderData={renderData}
+        reset={reset}
+      />
+      <St.ResetButton type="button" onClick={() => setReset(!reset)}>
+        RESET
+      </St.ResetButton>
+    </St.Main>
   );
 };
 

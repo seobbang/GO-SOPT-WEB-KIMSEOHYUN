@@ -1,28 +1,25 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-const CardSection = ({ level, setScore, renderData, score }) => {
+const CardSection = ({ level, setScore, renderData, score, reset }) => {
   const [testCardList, setTestCardList] = useState([]); // 최근에 선택된 두 카드 검사용 리스트
   const [openCardList, setOpenCardList] = useState([]); // 열려있는 카드 리스트
   const [isClickAbled, setIsClickAbled] = useState(true); // 카드 클릭 가능 여부
 
-  const resetCardGame = () => {
+  // level이 바뀌면 초기화
+  useEffect(() => {
     setTestCardList([]);
     setOpenCardList([]);
     setScore(0);
-  };
-
-  // level이 바뀌면 초기화
-  useEffect(() => {
-    resetCardGame();
-  }, [level]);
+  }, [level, reset]);
 
   // 카드 클릭 핸들링 함수
   const handleCardClick = (e) => {
-    const { id, className } = e.currentTarget;
-    let classNameArray = className.split(" ");
-    setTestCardList([...testCardList, classNameArray.at(-1)]); // 테스트 배열에 cardId 추가
+    const { id, classList } = e.currentTarget;
+    classList.add("rotate");
+    setTestCardList([...testCardList, classList[2]]); // 테스트 배열에 cardId 추가
     setOpenCardList([...openCardList, Number(id)]); // 카드 오픈 배열에 카드 인덱스 추가
+    // classList.remove("rotate");
   };
 
   // 테스트 배열 길이가 2일때 같은 카드인지 검사
@@ -41,11 +38,12 @@ const CardSection = ({ level, setScore, renderData, score }) => {
       setTimeout(() => {
         setOpenCardList(newList);
         setIsClickAbled(true);
-      }, 1500);
+      }, 1000);
     }
     // 테스트 배열 초기화
     setTestCardList([]);
   }
+  console.log(openCardList);
 
   // 카드 렌더링
   const cardList = renderData.map((item, idx) => {
@@ -110,31 +108,21 @@ const St = {
     width: 19rem;
     height: 25rem;
 
-    font-size: 2.7rem;
-
     border-radius: 1rem;
+
+    font-size: 2.7rem;
 
     background-color: ${({ theme }) => theme.colors.darkPink};
 
     cursor: pointer;
-  `,
-  ResetButton: styled.button`
-    position: absolute;
-    top: 5rem;
-    right: 7rem;
 
-    width: 10rem;
-    height: 5rem;
+    /* transition: all 1s linear;
+    transform: rotateY(180deg); */
 
-    font-weight: bold;
-
-    border-radius: 0.5rem;
-    border: none;
-
-    cursor: pointer;
-
-    &:hover {
-      border: 0.3rem solid black;
+    &.rotate {
+      transition: all 0.5s linear;
+      backface-visibility: hidden;
+      transform: rotateY(180deg);
     }
   `,
 };
