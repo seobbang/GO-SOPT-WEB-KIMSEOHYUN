@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const CardSection = ({ level, setScore, renderData }) => {
   const [testCardList, setTestCardList] = useState([]); // 최근에 선택된 두 카드 검사용 리스트
   const [openCardList, setOpenCardList] = useState([]); // 열려있는 카드 리스트
+  const [isClickAbled, setIsClickAbled] = useState(true); // 카드 클릭 가능 여부
 
   // level이 바뀌면 초기화
   useEffect(() => {
@@ -21,6 +22,8 @@ const CardSection = ({ level, setScore, renderData }) => {
 
   // 테스트 배열 길이가 2일때 같은 카드인지 검사
   if (testCardList.length === 2) {
+    // 카드 클릭 막기
+    setIsClickAbled(false);
     // 성공
     if (testCardList[0] === testCardList[1]) {
       setScore((score) => score + 1);
@@ -31,6 +34,7 @@ const CardSection = ({ level, setScore, renderData }) => {
       const newList = openCardList.slice(0, -2);
       setTimeout(() => {
         setOpenCardList(newList);
+        setIsClickAbled(true);
       }, 1500);
     }
     // 테스트 배열 초기화
@@ -50,7 +54,7 @@ const CardSection = ({ level, setScore, renderData }) => {
         key={`${cardId}_${idx}`}
         id={idx}
         className={cardId}
-        onClick={handleCardClick}
+        onClick={isClickAbled ? handleCardClick : null}
       >
         🌼
       </St.CardBack>
@@ -93,8 +97,6 @@ const St = {
   `,
 
   CardBack: styled.article`
-    top: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
