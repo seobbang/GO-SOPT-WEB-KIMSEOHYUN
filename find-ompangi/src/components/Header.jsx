@@ -9,7 +9,6 @@ const Header = ({ level, score }) => {
       <St.Score>
         {score} / {cardCount}
       </St.Score>
-      <St.ResetButton type="button">RESET</St.ResetButton>
     </St.HeaderContainer>
   );
 };
@@ -34,23 +33,5 @@ const St = {
   `,
   Score: styled.h2`
     margin-top: 2rem;
-  `,
-  ResetButton: styled.button`
-    position: absolute;
-    right: 4rem;
-
-    width: 10rem;
-    height: 5rem;
-
-    font-weight: bold;
-
-    border-radius: 0.5rem;
-    border: none;
-
-    cursor: pointer;
-
-    &:hover {
-      border: 0.3rem solid black;
-    }
   `,
 };

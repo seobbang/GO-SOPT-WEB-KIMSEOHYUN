@@ -6,11 +6,15 @@ const CardSection = ({ level, setScore, renderData, score }) => {
   const [openCardList, setOpenCardList] = useState([]); // 열려있는 카드 리스트
   const [isClickAbled, setIsClickAbled] = useState(true); // 카드 클릭 가능 여부
 
-  // level이 바뀌면 초기화
-  useEffect(() => {
+  const resetCardGame = () => {
     setTestCardList([]);
     setOpenCardList([]);
     setScore(0);
+  };
+
+  // level이 바뀌면 초기화
+  useEffect(() => {
+    resetCardGame();
   }, [level]);
 
   // 카드 클릭 핸들링 함수
@@ -113,5 +117,24 @@ const St = {
     background-color: ${({ theme }) => theme.colors.darkPink};
 
     cursor: pointer;
+  `,
+  ResetButton: styled.button`
+    position: absolute;
+    top: 5rem;
+    right: 7rem;
+
+    width: 10rem;
+    height: 5rem;
+
+    font-weight: bold;
+
+    border-radius: 0.5rem;
+    border: none;
+
+    cursor: pointer;
+
+    &:hover {
+      border: 0.3rem solid black;
+    }
   `,
 };
