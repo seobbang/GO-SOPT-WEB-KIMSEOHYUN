@@ -6,10 +6,13 @@ const Header = ({ level, score, setIsModalOpen }) => {
   const [isBlink, setIsBlink] = useState(false);
 
   useEffect(() => {
+    // 최초 렌더링 early return
     if (score === 0) return;
+
     if (score === cardCount) {
       setIsModalOpen(true);
     }
+
     setIsBlink(true);
     setTimeout(() => {
       setIsBlink(false);

@@ -5,6 +5,7 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
   const [testCardList, setTestCardList] = useState([]); // 최근에 선택된 두 카드 검사용 리스트
   const [openCardList, setOpenCardList] = useState([]); // 열려있는 카드 리스트
   const [isClickAbled, setIsClickAbled] = useState(true); // 카드 클릭 가능 여부
+  const [isRotate, setIsRotate] = useState("");
 
   // level이 바뀌면 초기화
   useEffect(() => {
@@ -16,10 +17,13 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
   // 카드 클릭 핸들링 함수
   const handleCardClick = (e) => {
     const { id, classList } = e.currentTarget;
-    classList.add("rotate");
+    classList.add("rotate"); // 회전 애니메이션
+
     setTestCardList([...testCardList, classList[2]]); // 테스트 배열에 cardId 추가
-    setOpenCardList([...openCardList, Number(id)]); // 카드 오픈 배열에 카드 인덱스 추가
-    // classList.remove("rotate");
+    setTimeout(() => {
+      setOpenCardList([...openCardList, Number(id)]); // 카드 오픈 배열에 카드 인덱스 추가
+      classList.remove("rotate");
+    }, 150);
   };
 
   // 테스트 배열 길이가 2일때 같은 카드인지 검사
@@ -33,12 +37,16 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
     }
     // 실패
     else {
-      // 카드 오픈 리스트에서 최근에 넣었던 두 개 카드 삭제
-      const newList = openCardList.slice(0, -2);
       setTimeout(() => {
+        setIsRotate("rotate");
+      }, 1200);
+      // 카드 오픈 리스트에서 최근에 넣었던 두 개 카드 삭제
+      setTimeout(() => {
+        const newList = openCardList.slice(0, -1);
         setOpenCardList(newList);
         setIsClickAbled(true);
-      }, 1000);
+        setIsRotate("");
+      }, 1300);
     }
     // 테스트 배열 초기화
     setTestCardList([]);
@@ -50,7 +58,12 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
     const { id: cardId, imgSrc, alt } = item;
     // openCardList에 인덱스 있는지 검사해서 조건분기 렌더링
     return openCardList.includes(idx) ? (
-      <St.CardFront key={`${cardId}_${idx}`} className={cardId}>
+      <St.CardFront
+        key={`${cardId}_${idx}`}
+        className={
+          openCardList.indexOf(idx) >= openCardList.length - 2 && `${isRotate}`
+        }
+      >
         <img src={imgSrc} alt={alt} />
       </St.CardFront>
     ) : (
@@ -94,6 +107,12 @@ const St = {
     background-color: white;
 
     cursor: pointer;
+
+    &.rotate {
+      transition: all 0.5s linear;
+      backface-visibility: hidden;
+      transform: rotateY(180deg);
+    }
 
     & > img {
       width: 15rem;
