@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const Header = ({ level, score }) => {
+const Header = ({ level, score, setIsModalOpen }) => {
   const cardCount = level === "EASY" ? 5 : level === "NORMAL" ? 7 : 9;
   const [isBlink, setIsBlink] = useState(false);
 
   useEffect(() => {
     if (score === 0) return;
+    if (score === cardCount) {
+      setIsModalOpen(true);
+    }
     setIsBlink(true);
     setTimeout(() => {
       setIsBlink(false);

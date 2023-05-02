@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import CardSection from "../components/CardSection";
 import { useMemo, useState } from "react";
 import OMPANGI_DATA from "../data/OMPANGI_DATA";
+import ModalPortal from "../components/modal/ModalPortal";
+import SuccessModal from "../components/modal/SuccessModal";
 
 const EASY = "EASY";
 const NORMAL = "NORMAL";
@@ -12,6 +14,7 @@ const FindOmpangi = () => {
   const [level, setLevel] = useState(EASY);
   const [score, setScore] = useState(0);
   const [reset, setReset] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 난이도 버튼 렌더링
   const levelButtonList = [EASY, NORMAL, HARD].map((item) => (
@@ -47,7 +50,7 @@ const FindOmpangi = () => {
 
   return (
     <St.Main>
-      <Header level={level} score={score} />
+      <Header level={level} score={score} setIsModalOpen={setIsModalOpen} />
       <St.LevelContainer>{levelButtonList}</St.LevelContainer>
       <CardSection
         score={score}
@@ -59,6 +62,11 @@ const FindOmpangi = () => {
       <St.ResetButton type="button" onClick={() => setReset(!reset)}>
         RESET
       </St.ResetButton>
+      {isModalOpen && (
+        <ModalPortal>
+          <SuccessModal setIsModalOpen={setIsModalOpen} />
+        </ModalPortal>
+      )}
     </St.Main>
   );
 };
