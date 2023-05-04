@@ -46,7 +46,6 @@ const FindOmpangi = () => {
   let renderData = useMemo(() => {
     return shuffling();
   }, [level, reset]);
-  console.log(renderData);
 
   return (
     <St.Main>

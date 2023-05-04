@@ -7,7 +7,7 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
   const [isClickAbled, setIsClickAbled] = useState(true); // 카드 클릭 가능 여부
   const [isRotate, setIsRotate] = useState("");
 
-  // level이 바뀌면 초기화
+  // level이 바뀌면, reset 버튼 눌리면 모두 초기화
   useEffect(() => {
     setTestCardList([]);
     setOpenCardList([]);
@@ -40,8 +40,8 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
       setTimeout(() => {
         setIsRotate("rotate");
       }, 1200);
-      // 카드 오픈 리스트에서 최근에 넣었던 두 개 카드 삭제
       setTimeout(() => {
+        // 카드 오픈 리스트에서 최근에 넣었던 두 개 카드 삭제
         const newList = openCardList.slice(0, -1);
         setOpenCardList(newList);
         setIsClickAbled(true);
@@ -51,7 +51,6 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
     // 테스트 배열 초기화
     setTestCardList([]);
   }
-  console.log(openCardList);
 
   // 카드 렌더링
   const cardList = renderData.map((item, idx) => {
@@ -59,7 +58,7 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
     // openCardList에 인덱스 있는지 검사해서 조건분기 렌더링
     return openCardList.includes(idx) ? (
       <St.CardFront
-        key={`${cardId}_${idx}`}
+        key={`${cardId}_${idx}_front`}
         className={
           openCardList.indexOf(idx) >= openCardList.length - 2 && `${isRotate}`
         }
@@ -68,7 +67,7 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
       </St.CardFront>
     ) : (
       <St.CardBack
-        key={`${cardId}_${idx}`}
+        key={`${cardId}_${idx}_back`}
         id={idx}
         className={cardId}
         onClick={isClickAbled ? handleCardClick : null}
