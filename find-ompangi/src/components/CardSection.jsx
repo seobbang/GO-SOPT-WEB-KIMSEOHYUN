@@ -86,7 +86,9 @@ const St = {
   CardContainer: styled.section`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+
+    column-gap: 1rem;
     row-gap: 2rem;
 
     width: 73%;
