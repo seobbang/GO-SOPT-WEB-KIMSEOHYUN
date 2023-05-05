@@ -137,7 +137,7 @@ const St = {
     cursor: pointer;
 
     &.rotate {
-      transition: all 0.5s linear;
+      transition: all 0.2s linear;
       backface-visibility: hidden;
       transform: rotateY(180deg);
     }
