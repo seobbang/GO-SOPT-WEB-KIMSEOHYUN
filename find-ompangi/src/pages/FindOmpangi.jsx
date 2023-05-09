@@ -35,11 +35,12 @@ const FindOmpangi = () => {
     };
 
     shuffle(OMPANGI_DATA);
+    // 셔플된 데이터 중 레벨에 맞게 앞에서 개수만큼 자름
     const slicedData = OMPANGI_DATA.slice(
       0,
       level === EASY ? 5 : level === NORMAL ? 7 : 9
     );
-    return shuffle([...slicedData, ...slicedData]);
+    return shuffle([...slicedData, ...slicedData]); // 잘린 데이터 두 개 붙여서 다시 한 번 셔플
   };
 
   // 렌더링 할 랜덤 배열 만들기
