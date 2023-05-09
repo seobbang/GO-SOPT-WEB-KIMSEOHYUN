@@ -15,22 +15,8 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
     setScore(0);
   }, [level, reset]);
 
-  // 카드 클릭 핸들링 함수
-  const handleCardClick = (e) => {
-    const { id, classList } = e.currentTarget;
-    classList.add("rotate"); // 회전 애니메이션
-
-    testCardList.push(classList[2]); // 테스트 배열에 cardId 추가
-    console.log(testCardList);
-    console.log(testCardList.length);
-    setTimeout(() => {
-      setOpenCardList([...openCardList, Number(id)]); // 카드 오픈 배열에 카드 인덱스 추가
-      classList.remove("rotate");
-    }, 150);
-  };
-
-  // 테스트 배열 길이가 2일때 같은 카드인지 검사
-  if (testCardList.length === 2) {
+  // 짝 맞추기 시도한 카드 검사 함수
+  const testCard = () => {
     // 카드 클릭 막기
     setIsClickAbled(false);
     // 성공
@@ -44,7 +30,7 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
         setIsRotate("rotate");
         setTimeout(() => {
           // 카드 오픈 리스트에서 최근에 넣었던 두 개 카드 삭제
-          const newList = openCardList.slice(0, -2);
+          const newList = openCardList.slice(0, -1);
           setOpenCardList(newList);
           setIsClickAbled(true);
           setIsRotate("");
@@ -53,7 +39,24 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
     }
     // 테스트 배열 초기화
     testCardList.length = 0;
-  }
+  };
+
+  // 카드 클릭 핸들링 함수
+  const handleCardClick = (e) => {
+    const { id, classList } = e.currentTarget;
+    classList.add("rotate"); // 회전 애니메이션
+
+    testCardList.push(classList[2]); // 테스트 배열에 cardId 추가
+    setTimeout(() => {
+      setOpenCardList([...openCardList, Number(id)]); // 카드 오픈 배열에 카드 인덱스 추가
+      classList.remove("rotate");
+    }, 150);
+
+    // 테스트 배열 길이가 2일때 같은 카드인지 검사
+    if (testCardList.length === 2) {
+      testCard();
+    }
+  };
 
   // 카드 렌더링
   const cardList = renderData.map((item, idx) => {
