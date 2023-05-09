@@ -2,6 +2,7 @@
   --main-bg-color: #faf7ef;
   --main-orange-color: #fbda8f;
   --dark-orange-color: #f6ae3a;
+  --lignt-gray-color: rgb(199, 199, 199);
 }
 
 * {
@@ -16,6 +17,7 @@ body {
 .header {
   position: sticky;
   top: 0;
+  z-index: 5;
 
   display: flex;
   justify-content: space-between;
@@ -71,11 +73,16 @@ body {
   margin-bottom: 2rem;
 }
 
-.menu__bar li {
+.menu__bar a,
+li {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+
+  color: black;
+  text-decoration: none;
 }
 
+.menu__bar a:hover,
 .menu__bar li:hover {
   color: var(--dark-orange-color);
 }
@@ -92,7 +99,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  width: 15rem;
+  min-width: 13rem;
   height: 17rem;
 
   padding: 1.2rem 1.5rem;
@@ -127,11 +134,62 @@ body {
   cursor: pointer;
 }
 
+.nav li.selected {
+  font-weight: bold;
+
+  background-color: var(--dark-orange-color);
+  color: white;
+
+  box-shadow: 0.125rem 0.188rem 0.313rem gray;
+}
+
 .nav li:hover {
   font-weight: bold;
 
   color: white;
   background-color: var(--dark-orange-color);
+}
+
+/* product section */
+.selected__category {
+  display: flex;
+
+  margin-bottom: 1rem;
+}
+
+.selected__category > li.selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 5.5rem;
+  height: 2.5rem;
+
+  font-size: 1.2rem;
+
+  margin-right: 1rem;
+  padding: 0 0.5rem;
+
+  border: 0.1rem solid gray;
+  border-radius: 0.2rem;
+
+  background-color: white;
+}
+
+.selected__category > li {
+  display: none;
+}
+
+.selected__category > li > button {
+  border: none;
+  border-radius: 0.1rem;
+
+  font-weight: bold;
+
+  background-color: var(--lignt-gray-color);
+  color: white;
+
+  cursor: pointer;
 }
 
 /* card section */
@@ -145,7 +203,22 @@ body {
   width: 100%;
 }
 
-.card__section article {
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 50%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+.card__section .selected_all,
+.card__section .selected_snack,
+.card__section .selected_drink,
+.card__section .selected_ramyun {
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -155,8 +228,16 @@ body {
   height: 18rem;
 
   padding: 1rem;
+  border-radius: 0.7rem;
 
   background-color: white;
+  box-shadow: 0.1rem 0.1rem 0.3rem var(--lignt-gray-color);
+
+  animation: fadeInUp 0.7s;
+}
+
+.card__section article {
+  display: none;
 }
 
 @media (max-width: 80rem) {
@@ -190,7 +271,20 @@ body {
   font-weight: bold;
 }
 
-.card__section ul {
+.card__section div.tagContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.3rem;
+
+  width: 100%;
+  height: 2rem;
+
+  margin: 1rem 0;
+}
+
+.card__section div.tagContainer ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -199,13 +293,86 @@ body {
   width: 10rem;
   height: 1rem;
 
-  margin: 1rem 0;
-
   overflow: hidden;
+}
+
+.card__section div.tagContainer li {
+  font-size: 1rem;
 }
 
 .card__section li:before {
   content: "#";
+}
+
+.card__section button.showMore {
+  font-size: 1rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 0.5rem;
+
+  color: rgb(71, 71, 71);
+  background-color: var(--lignt-gray-color);
+
+  cursor: pointer;
+}
+
+.card__section button.showMore:hover {
+  color: white;
+  background-color: black;
+}
+
+.card__section div.tagModal {
+  position: absolute;
+  z-index: 1;
+  top: 6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 90%;
+
+  padding: 1.5rem 1rem;
+
+  border-radius: 1rem;
+
+  background-color: pink;
+}
+
+.card__section div.tagModal ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 0.4rem;
+}
+
+.card__section div.tagModal li {
+  font-size: 1rem;
+}
+
+.card__section div.tagModal button.close {
+  font-size: 1rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 0.2rem;
+
+  color: rgb(71, 71, 71);
+  background-color: white;
+
+  cursor: pointer;
+}
+
+.card__section div.tagModal button.close:hover {
+  color: white;
+  background-color: black;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .card__section article > img {
@@ -213,7 +380,7 @@ body {
   height: 9rem;
 }
 
-.card__section article button {
+.card__section article button.heartButton {
   display: flex;
   align-items: center;
 
@@ -226,12 +393,12 @@ body {
   cursor: pointer;
 }
 
-.card__section article button svg {
+.card__section svg {
   width: 1.6rem;
   height: 1.6rem;
   fill: gray;
 }
 
-.card__section article svg:hover {
+.card__section svg:hover {
   fill: pink;
 }
