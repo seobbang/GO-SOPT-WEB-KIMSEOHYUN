@@ -1,18 +1,24 @@
 export const TODO_DATA = [
   {
     category: "솝트",
-    todos: ["2차 세미나 복습", "2차 과제"],
-    isDone: [true, false],
+    todos: [
+      { todoName: "2차 세미나 복습", isDone: true },
+      { todoName: "2차 과제", isDone: false },
+    ],
   },
   {
     category: "스터디",
-    todos: ["웹심화 스터디", "JS 스터디 아티클"],
-    isDone: [true, false],
+    todos: [
+      { todoName: "웹심화 스터디", isDone: true },
+      { todoName: "JS 스터디 아티클", isDone: false },
+    ],
   },
   {
     category: "학교",
-    todos: ["졸프 면담 준비", "최종 보고서 작성"],
-    isDone: [false, false],
+    todos: [
+      { todoName: "졸프 면담 준비", isDone: false },
+      { todoName: "최종 보고서 작성", isDone: false },
+    ],
   },
 ];
 
