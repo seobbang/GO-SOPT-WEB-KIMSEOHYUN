@@ -7,24 +7,24 @@ export default function DragAndDrop() {
   const ul = $(".mycategory__section > ul");
   const section = $(".mycategory__section");
 
+  function createList(category) {
+    const li = document.createElement("li");
+    const button = document.createElement("button");
+
+    button.classList.add(category);
+    button.innerText = category;
+    button.draggable = true;
+
+    li.appendChild(button);
+
+    ul.appendChild(li);
+
+    return;
+  }
+
   /* 카테고리 렌더링 */
   function render() {
     const orderArray = JSON.parse(localStorage.getItem("categoryOrder"));
-
-    function createList(category) {
-      const li = document.createElement("li");
-      const button = document.createElement("button");
-
-      button.classList.add(category);
-      button.innerText = category;
-      button.draggable = true;
-
-      li.appendChild(button);
-
-      ul.appendChild(li);
-
-      return;
-    }
 
     orderArray.forEach((category) => {
       TODO_DATA.forEach((item) => {
