@@ -13,6 +13,7 @@ function uploadImg() {
   reader.onloadend = () => {
     img.src = reader.result;
     img.classList.remove("hidden");
+    img.alt = "상품 사진";
   };
 }
 
