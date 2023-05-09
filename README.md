@@ -5,8 +5,8 @@
 
 | Week  | 과제                                              | 링크                                                               |
 | ----- | ------------------------------------------------- |------------------------------------------------------------------ |
-| 1주차 | 웨비들의 냠냠창업, TO DO MATE, 생각과제 - 웹 최적화 | <a href="https://github.com/GO-SOPT-WEB/SeohyunKim/pull/1">1주차 과제</a> |
-|  |                                    | |
-|  |                                        ||
+| 1주차 | [웨비들의 냠냠창업, TO DO MATE] 기본, 심화, 생각과제 | <a href="https://github.com/GO-SOPT-WEB/SeohyunKim/pull/1">1주차 과제</a> |
+| 2주차 | [웨비들의 냠냠창업, TO DO MATE] 기본, 심화, 생각과제 | <a href="https://github.com/GO-SOPT-WEB/SeohyunKim/pull/2">2주차 과제</a>|
+| 3주차 | [옴팡이를 찾아라] 기본, 심화, 생각과제 |<a href="https://github.com/GO-SOPT-WEB/SeohyunKim/pull/4">3주차 과제</a>|
 
 </div>
