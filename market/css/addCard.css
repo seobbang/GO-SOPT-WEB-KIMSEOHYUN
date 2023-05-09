@@ -31,7 +31,7 @@ main {
   align-items: center;
 
   width: 38rem;
-  height: 32rem;
+  height: 35rem;
 
   border-radius: 3rem;
   border: 0.2rem solid black;
@@ -73,12 +73,18 @@ main {
 }
 
 img {
-  height: 13rem;
+  height: 11rem;
   margin-bottom: 2rem;
 }
 
 img.hidden {
   visibility: hidden;
+}
+
+select {
+  width: 5rem;
+  height: 2rem;
+  margin: 1rem 0;
 }
 
 button {

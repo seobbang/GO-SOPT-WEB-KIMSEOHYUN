@@ -19,9 +19,10 @@ function uploadImg() {
 function handleAddButton() {
   const { value: productName } = $("input.name");
   const { value: tags } = $("input.tags");
+  const { value: category } = $("select");
 
   const tag = tags.split(",");
-  const newData = { productName, tag };
+  const newData = { productName, tag, category };
 
   localStorage.setItem("newData", JSON.stringify(newData));
 

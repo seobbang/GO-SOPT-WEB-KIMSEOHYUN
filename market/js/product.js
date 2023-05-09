@@ -7,7 +7,6 @@ const newProduct = JSON.parse(localStorage.getItem("newData"));
 if (newProduct) {
   PRODUCT_DATA.push({
     ...newProduct,
-    category: "snack",
     img: "images/ABC초코쿠키.png",
   });
 }
