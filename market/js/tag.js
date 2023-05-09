@@ -11,20 +11,7 @@ function handleModal(e) {
       `.card__section article#${classList[1]} div.tagModal`
     );
 
-    // 버튼에 따라 action 정의
-    const action = classList[0] === "showMore" ? "SHOW" : "HIDDEN";
-    switch (action) {
-      case "SHOW":
-        tagModalList.remove("hidden");
-        break;
-
-      case "HIDDEN":
-        tagModalList.add("hidden");
-        break;
-
-      default:
-        break;
-    }
+    tagModalList.toggle("hidden");
   } else {
     e.preventDefault();
   }

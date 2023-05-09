@@ -72,11 +72,10 @@ export default function ToDoList() {
     // 완료 버튼
     if (tagName === "path") {
       const { classList } = e.target.parentElement;
+      classList.toggle("done");
       if (classList.contains("done")) {
-        classList.remove("done"); // 완료 해제
         todayCount.innerText++;
       } else {
-        classList.add("done"); // 완료 추가
         todayCount.innerText--;
       }
     }
