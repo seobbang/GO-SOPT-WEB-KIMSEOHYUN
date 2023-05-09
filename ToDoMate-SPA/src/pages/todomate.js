@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../reset.css" />
-    <script defer type="module" src="./TODO_DATA.js"></script>
-    <script defer type="module" src="./todolist.js"></script>
-    <title>To Do Mate</title>
-  </head>
-  <body>
+import ToDoList from "../components/todolist";
+
+function ToDoMate($container) {
+  this.$container = $container;
+
+  this.setState = () => {
+    this.render();
+  };
+
+  this.render = () => {
+    this.$container.innerHTML = `
     <header class="header">
       <h1>WEB TO DO MATE</h1>
     </header>
@@ -133,10 +131,11 @@
         </dialog>
       </div>
     </main>
+    `;
+  };
 
-    <footer class="footer">
-      <a href="todomate.html">달력</a>
-      <a href="mycategory.html">MY</a>
-    </footer>
-  </body>
-</html>
+  this.render();
+  ToDoList();
+}
+
+export default ToDoMate;
