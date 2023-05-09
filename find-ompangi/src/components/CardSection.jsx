@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
+const testCardList = [];
+
 const CardSection = ({ level, setScore, renderData, score, reset }) => {
-  const [testCardList, setTestCardList] = useState([]); // 최근에 선택된 두 카드 검사용 리스트
   const [openCardList, setOpenCardList] = useState([]); // 열려있는 카드 리스트
   const [isClickAbled, setIsClickAbled] = useState(true); // 카드 클릭 가능 여부
   const [isRotate, setIsRotate] = useState("");
 
   // level이 바뀌면, reset 버튼 눌리면 모두 초기화
   useEffect(() => {
-    setTestCardList([]);
+    testCardList.length = 0;
     setOpenCardList([]);
     setScore(0);
   }, [level, reset]);
@@ -19,7 +20,9 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
     const { id, classList } = e.currentTarget;
     classList.add("rotate"); // 회전 애니메이션
 
-    setTestCardList([...testCardList, classList[2]]); // 테스트 배열에 cardId 추가
+    testCardList.push(classList[2]); // 테스트 배열에 cardId 추가
+    console.log(testCardList);
+    console.log(testCardList.length);
     setTimeout(() => {
       setOpenCardList([...openCardList, Number(id)]); // 카드 오픈 배열에 카드 인덱스 추가
       classList.remove("rotate");
@@ -39,17 +42,17 @@ const CardSection = ({ level, setScore, renderData, score, reset }) => {
     else {
       setTimeout(() => {
         setIsRotate("rotate");
+        setTimeout(() => {
+          // 카드 오픈 리스트에서 최근에 넣었던 두 개 카드 삭제
+          const newList = openCardList.slice(0, -2);
+          setOpenCardList(newList);
+          setIsClickAbled(true);
+          setIsRotate("");
+        }, 100);
       }, 1200);
-      setTimeout(() => {
-        // 카드 오픈 리스트에서 최근에 넣었던 두 개 카드 삭제
-        const newList = openCardList.slice(0, -1);
-        setOpenCardList(newList);
-        setIsClickAbled(true);
-        setIsRotate("");
-      }, 1300);
     }
     // 테스트 배열 초기화
-    setTestCardList([]);
+    testCardList.length = 0;
   }
 
   // 카드 렌더링
