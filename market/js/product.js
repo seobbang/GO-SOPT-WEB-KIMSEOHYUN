@@ -18,9 +18,9 @@ PRODUCT_DATA.forEach(({ category, productName, tag, img }) => {
     tagList += `<li>${tag}</li>`;
   });
 
-  cardSection.innerHTML += `<article class="${category}" id="${productName
-    .split(" ")
-    .join("")}">
+  cardSection.insertAdjacentHTML(
+    "beforeend",
+    `<article class="${category}" id="${productName.split(" ").join("")}">
             <header>${productName}</header>
             <div class="tagContainer">
                 <ul>${tagList}</ul>
@@ -47,5 +47,6 @@ PRODUCT_DATA.forEach(({ category, productName, tag, img }) => {
                 />
               </svg>
             </button>
-          </article>`;
+          </article>`
+  );
 });

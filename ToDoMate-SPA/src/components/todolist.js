@@ -36,7 +36,9 @@ export default function ToDoList() {
         </li>`;
       });
 
-      toDoListSection.innerHTML += `
+      toDoListSection.insertAdjacentHTML(
+        "beforeend",
+        `
       <section class="todo__category">
         <h2 id="${category}">${category}
           <button type="button" class="${category}">+</button>
@@ -44,7 +46,8 @@ export default function ToDoList() {
         <ul class="${category}">
         ${toDoList}
         </ul>
-      </section>`;
+      </section>`
+      );
     }
 
     orderArray.forEach((category) => {
@@ -111,7 +114,9 @@ export default function ToDoList() {
     if (isDuplicate) {
       alert("이미 있는 항목입니다.");
     } else {
-      ul.innerHTML += `
+      ul.insertAdjacentHTML(
+        "beforeend",
+        `
     <li>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +129,8 @@ export default function ToDoList() {
         />
       </svg>
     ${input.value}
-    </li>`;
+    </li>`
+      );
       input.value = ""; // input 비우기
       todayCount.innerText++; // 할 일 개수 1 추가
     }
