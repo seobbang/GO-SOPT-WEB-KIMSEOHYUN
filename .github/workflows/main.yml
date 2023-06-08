@@ -1,0 +1,54 @@
+# Actions 이름 - github 페이지에서 볼 수 있다.
+name: Card Game
+
+# main 브랜치에 push가 되면 해당 workflow가 수행된다.
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    # 해당 동작(build)를 돌릴 OS
+    runs-on: ubuntu-latest
+    steps:
+      # 실제 main branch에 push하면 동작할 내용들
+
+      # 해당 환경을 Node.js 위에서 실행하겠다고 명시
+      # name : 실행시 표시될 이름
+      - name: Use Node.js
+        # uses : 다른 사람이 만든 Plugin들을 사용
+        uses: actions/setup-node@v3
+        # with : plugin에서 사용할 파라미터를 넣어줍니다.
+        with:
+          node-version: "16"
+
+      # checkout 하기
+      # GitHub의 코드 저장소에 올려둔 코드를 CI 서버로 내려받는 행위
+      - name: checkout
+        # “Actions” 라고 하는 일종의 모듈을 호출하여
+        # 공통적으로 사용하는 절차를 재사용할 수 있게 해준다.
+        uses: actions/checkout@v3
+
+      # 모듈 변화가 있을 때만 yarn install - 약 30초 정도 차이 나더라!
+      - name: Cache node modules
+        uses: actions/cache@v3
+        id: cache
+        with:
+          # # cache의 대상
+          path: ./find-ompangi/node_modules
+          # 실행 context에서 가져온 package-lock.json 파일을 해싱해서 키로 저장
+          # 만약 key가 그대로면 캐싱된 파일을 찾아서 사용하고,
+          # key가 바뀌었다면 변경사항이 있다고 판단해 다시 install
+          key: ${{ runner.os }}-node-${{ hashFiles('./find-ompangi/package.json') }}
+
+      - name: Install Dependencies
+        # key에 맞는 캐시가 존재하는 경우를 cache-hit
+        if: steps.cache.outputs.cache-hit != 'true'
+        working-directory: ./find-ompangi
+        # shell에 올라가는 메세지
+        run: yarn install
+
+      - run: yarn build
+        working-directory: ./find-ompangi
+        # if : 해당 step의 실행조건을 명시 할 수 있습니다.
+        if: ${{ always() }}
