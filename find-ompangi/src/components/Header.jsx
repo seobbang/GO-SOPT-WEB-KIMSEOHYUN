@@ -21,7 +21,7 @@ const Header = ({ level, score, setIsModalOpen }) => {
 
   return (
     <St.HeaderContainer>
-      <h1>🔮 옴팡이를 맞춰주세요 🔮</h1>
+      <h1>🔮 옴팡이를 맞춰보세요 🔮</h1>
       <St.Score className={isBlink && "blink"}>
         {score} / {cardCount}
       </St.Score>
